@@ -8,72 +8,63 @@ assign sum = (a ^ b) ^ (cin);
 assign cout = (a & b) | ((a^b) & cin);
 endmodule
 
-module add8bit (
-    input [7:0] a, b,
+module add4bit (
+    input [3:0] a, b,
     input cin,
-    output [7:0] sum,
-    output cout1
+    output [3:0] sum,
+    output cout
 );
-
-reg [7:0] cout;
+reg [3:0] cout1;
 add1bit a0 (
     .a(a[0]),
     .b(b[0]),
     .cin(cin),
-    .cout(cout[0]),
+    .cout(cout1[0]),
     .sum(sum[0])
 );
 add1bit a1 (
     .a(a[1]),
     .b(b[1]),
-    .cin(cout[0]),
-    .cout(cout[1]),
+    .cin(cout1[0]),
+    .cout(cout1[1]),
     .sum(sum[1])
 );
 add1bit a2 (
     .a(a[2]),
     .b(b[2]),
-    .cin(cout[1]),
-    .cout(cout[2]),
+    .cin(cout1[1]),
+    .cout(cout1[2]),
     .sum(sum[2])
 );
 add1bit a3 (
     .a(a[3]),
     .b(b[3]),
-    .cin(cout[2]),
-    .cout(cout[3]),
+    .cin(cout1[2]),
+    .cout(cout1[3]),
     .sum(sum[3])
 );
-add1bit a4 (
-    .a(a[4]),
-    .b(b[4]),
-    .cin(cout[3]),
-    .cout(cout[4]),
-    .sum(sum[4])
-);
-add1bit a5 (
-    .a(a[5]),
-    .b(b[5]),
-    .cin(cout[4]),
-    .cout(cout[5]),
-    .sum(sum[5])
-);
-add1bit a6 (
-    .a(a[6]),
-    .b(b[6]),
-    .cin(cout[5]),
-    .cout(cout[6]),
-    .sum(sum[6])
-);
-add1bit a7 (
-    .a(a[7]),
-    .b(b[7]),
-    .cin(cout[6]),
-    .cout(cout[7]),
-    .sum(sum[7])
-);
-assign cout1 = cout[7];
+assign cout = cout1;
+endmodule
 
+module add8bit (
+    input [7:0] a, b,
+    input cin,
+    output [7:0] sum,
+    output cout
+);
+add4bit add_low(
+    .a(a[3:0]),
+    .b(b[3:0]),
+    .cin(cin),
+    .cout(cout),
+    .sum(sum[3:0])
+);
+add4bit add_high(
+    .a(a[7:4]),
+    .b(b[7:4]),
+    .cin(cout),
+    .sum(sum[7:4])
+);
 endmodule
 
 module add16bit (
@@ -86,7 +77,7 @@ add8bit add_low(
     .a(a[7:0]),
     .b(b[7:0]),
     .cin(cin),
-    .cout1(cout),
+    .cout(cout),
     .sum(sum[7:0])
 );
 add8bit add_high(

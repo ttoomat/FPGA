@@ -9,14 +9,14 @@ reg sum_reg, cout_reg;
 always @* begin
     if (~sub) begin
         sum_reg = (a ^ b) ^ (cin);
-        cout_reg = (a & b) | ((a^b) & cin);
+        cout_reg = (a & b) | ((a ^ b) & cin);
     end else begin
         // если вычитание - просто таблицы истинности составила
         if (~cin) begin
             sum_reg = a ^ b;
             cout_reg = b & (~a);
         end else begin
-            sum_reg = (~a) & (~b);
+            sum_reg = ~(a ^ b);
             cout_reg = ~(a & (~b));
         end
     end
@@ -33,7 +33,7 @@ module add4bit (
     output [3:0] sum,
     output cout
 );
-reg [7:0] cout1;
+reg [3:0] cout1;
 add1bit a0 (
     .a(a[0]),
     .b(b[0]),
@@ -66,7 +66,7 @@ add1bit a3 (
     .cout(cout1[3]),
     .sum(sum[3])
 );
-assign cout = cout1;
+assign cout = cout1[3];
 endmodule
 
 module add8bit (
@@ -75,20 +75,22 @@ module add8bit (
     output [7:0] sum,
     output cout
 );
-    add4bit add_low(
-        .a(a[7:4]),
-        .b(b[7:4]),
-        .sub(sub),
-        .cin(cin),
-        .cout(cout),
-        .sum(sum[7:4])
-    );
+reg cout1;
     add4bit add_high(
         .a(a[3:0]),
         .b(b[3:0]),
         .sub(sub),
-        .cin(cout),
+        .cin(cin),
+        .cout(cout1),
         .sum(sum[3:0])
+    );
+    add4bit add_low(
+        .a(a[7:4]),
+        .b(b[7:4]),
+        .sub(sub),
+        .cin(cout1),
+        .cout(cout),
+        .sum(sum[7:4])
     );
 endmodule
 
@@ -98,46 +100,42 @@ module add16bit (
     output [15:0] sum,
     output cout
 );
-// если у нас sub=0 - это просто сложение
-// если sub=1 - может быть занимание у десятков, тогда cout может быть использован под заём
-
-add8bit add_low(
-    .a(a[15:8]),
-    .b(b[15:8]),
-    .sub(sub),
-    .cin(cin),
-    .cout(cout),
-    .sum(sum[15:8])
-);
+reg cout1;
 add8bit add_high(
     .a(a[7:0]),
     .b(b[7:0]),
     .sub(sub),
-    .cin(cout),
+    .cin(cin),
+    .cout(cout1),
     .sum(sum[7:0])
+);
+add8bit add_low(
+    .a(a[15:8]),
+    .b(b[15:8]),
+    .sub(sub),
+    .cin(cout1),
+    .cout(cout),
+    .sum(sum[15:8])
 );
 endmodule
 
 module part_5_top_module (input [31:0]a, input [31:0]b, input sub, output [31:0] sum);
     // если sub = 0 - сложение
     reg cout;
-    add16bit add_low(
-        .a(a[31:16]),
-        .b(b[31:16]),
-        .cin(1'b0),
-        .cout(cout),
-        .sub(sub),
-        .sum(sum[31:16])
-    );
     add16bit add_high(
         .a(a[15:0]),
         .b(b[15:0]),
-        .cin(cout),
         .sub(sub),
-        //.cout(cout),
+        .cin(1'b0),
+        .cout(cout),
         .sum(sum[15:0])
     );
+    add16bit add_low(
+        .a(a[31:16]),
+        .b(b[31:16]),
+        .sub(sub),
+        .cin(cout),
+        .sum(sum[31:16])
+    );
     
-    
-
 endmodule

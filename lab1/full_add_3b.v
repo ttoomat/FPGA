@@ -4,7 +4,6 @@ module full_add_3b(
     output [2:0] cout,
     output [2:0] sum );
 
-// 0 - lest sign?
 assign sum[0] = (a[0] ^ b[0]) ^ (cin);
 assign cout[0] = (a[0] & b[0]) | ((a[0]^b[0]) & cin);
 
@@ -13,6 +12,5 @@ assign cout[1] = (a[1] & b[1]) | ((a[1]^b[1]) & cout[0]);
 
 assign sum[2] = (a[2] ^ b[2]) ^ (cout[1]);
 assign cout[2] = (a[2] & b[2]) | ((a[2]^b[2]) & cout[1]);
-
-
+    
 endmodule

@@ -5,7 +5,7 @@ module add1bit (
     output sum
 );
 assign sum = (a ^ b) ^ (cin);
-assign cout = (a & b) | ((a^b) & cin);
+assign cout = (a & b) | ((a ^ b) & cin);
 endmodule
 
 module add8bit (
@@ -103,7 +103,6 @@ endmodule
 module part_3_top_module (input [31:0]a, input [31:0]b, input cin, output [31:0] sum);
     // сложение 32 битных сигналов как 2 сложения 16-битных
     reg cout, cout1;
-    // может понадобиться reg [31:0]sum_reg;
     add16bit add_low(
         .a(a[15:0]),
         .b(b[15:0]),
@@ -115,7 +114,6 @@ module part_3_top_module (input [31:0]a, input [31:0]b, input cin, output [31:0]
         .a(a[31:16]),
         .b(b[31:16]),
         .cin(cout),
-        .cout(cout1), // not needed..
         .sum(sum[31:16])
     );
 endmodule

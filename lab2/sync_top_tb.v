@@ -2,15 +2,17 @@
 
 module sync_top_tb;
 
-	reg clk=1;
-	always #5 clk = !clk;
+	reg clk_a=0, clk_b=0;
+	always #5 clk_a = !clk_a;
+	always #3 clk_b = !clk_b;
 
 	reg signal;
 	wire signal_sync;
 
 	sync_top top0
 	(
-		.clk(clk),
+		.clk_a(clk_a),
+		.clk_b(clk_b),
 		.signal(signal),
 		.signal_sync(signal_sync)
 	);
@@ -22,12 +24,12 @@ module sync_top_tb;
 		signal <= 0;
 		#2
 		signal <= 1;
-		@(posedge clk);
-		@(posedge clk);
-		@(posedge clk);
+		@(posedge clk_b);
+		@(posedge clk_b);
+		@(posedge clk_b);
 		signal <= 0;
-		@(posedge clk);
-		@(posedge clk);
+		@(posedge clk_b);
+		@(posedge clk_b);
 		#6
 		signal <= 1;
 		#6
@@ -40,9 +42,9 @@ module sync_top_tb;
 		signal <= 1;
 		#3
 		signal <= 0;
-		@(posedge clk);
-		@(posedge clk);
-		@(posedge clk);
+		@(posedge clk_b);
+		@(posedge clk_b);
+		@(posedge clk_b);
 
 		$finish;
 		

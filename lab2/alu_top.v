@@ -16,14 +16,15 @@ always @(*) begin
     //sll
     5'b00_001: result_o = a_i << b_i;
     //slts:
-    5'b00_010: result_o = $signed(a_i) > $signed(b_i);
+    5'b00_010: flag_o = $signed(a_i) > $signed(b_i);
     //sltu:
-    5'b00_011: result_o = a_i > b_i;
+    5'b00_011: flag_o = $unsigned(a_i) > $unsigned(b_i);
     //xor:
     5'b00_100: result_o = a_i ^ b_i;
     //srl:
     5'b00_101: result_o = a_i >> b_i;
     //sra:
+    // 1 bit - sign
     5'b01_101: result_o = $signed(a_i) >>> b_i;
     //or:
     5'b00_110: result_o = a_i | b_i;

@@ -1,0 +1,7 @@
+лаба 1
+
+как вызвать один модуль в другом?
+
+module_name instance_name(
+  .param(our_param);
+);

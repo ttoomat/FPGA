@@ -7,7 +7,7 @@ Running placement......
 [10%] Placement Phase 0 completed
 [20%] Placement Phase 1 completed
 [30%] Placement Phase 2 completed
-WARN  (TA1132) :  'clk' was determined to be a clock but was not created.
+WARN  (TA1132) :  'iclk' was determined to be a clock but was not created.
 WARN  (TA1132) :  'tck_pad_i' was determined to be a clock but was not created.
 [50%] Placement Phase 3 completed
 Running routing......
@@ -27,5 +27,5 @@ Generate file "C:\Gowin\workspace\lab4\impl\pnr\lab4.pin.html" completed
 Generate file "C:\Gowin\workspace\lab4\impl\pnr\lab4.rpt.html" completed
 Generate file "C:\Gowin\workspace\lab4\impl\pnr\lab4.rpt.txt" completed
 Generate file "C:\Gowin\workspace\lab4\impl\pnr\lab4.tr.html" completed
-Wed Oct 22 19:32:59 2025
+Wed Oct 22 20:00:03 2025
 

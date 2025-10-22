@@ -1,39 +1,30 @@
 module gw_gao(
-    A,
     LED2,
     LED3,
     LED4,
     LED5,
-    \cnt[1] ,
-    \cnt[0] ,
-    clk,
+    iclk,
     tms_pad_i,
     tck_pad_i,
     tdi_pad_i,
     tdo_pad_o
 );
 
-input A;
 input LED2;
 input LED3;
 input LED4;
 input LED5;
-input \cnt[1] ;
-input \cnt[0] ;
-input clk;
+input iclk;
 input tms_pad_i;
 input tck_pad_i;
 input tdi_pad_i;
 output tdo_pad_o;
 
-wire A;
 wire LED2;
 wire LED3;
 wire LED4;
 wire LED5;
-wire \cnt[1] ;
-wire \cnt[0] ;
-wire clk;
+wire iclk;
 wire tms_pad_i;
 wire tck_pad_i;
 wire tdi_pad_i;
@@ -107,8 +98,8 @@ gw_con_top  u_icon_top(
 
 ao_top u_ao_top(
     .control(control0[9:0]),
-    .data_i({A,LED2,LED3,LED4,LED5,\cnt[1] ,\cnt[0] }),
-    .clk_i(clk)
+    .data_i({LED2,LED3,LED4,LED5}),
+    .clk_i(iclk)
 );
 
 endmodule

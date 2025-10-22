@@ -1,0 +1,36 @@
+//
+//Written by GowinSynthesis
+//Tool Version "V1.9.10.01 (64-bit)"
+//Wed Oct 22 18:12:41 2025
+
+//Source file index table:
+//file0 "\C:/Gowin/workspace/lab4/src/top.v"
+`timescale 100 ps/100 ps
+module top (
+  A,
+  LED4
+)
+;
+input A;
+output LED4;
+wire LED4_d;
+wire VCC;
+wire GND;
+  IBUF A_ibuf (
+    .O(LED4_d),
+    .I(A) 
+);
+  OBUF LED4_obuf (
+    .O(LED4),
+    .I(LED4_d) 
+);
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+  GSR GSR (
+    .GSRI(VCC) 
+);
+endmodule /* top */

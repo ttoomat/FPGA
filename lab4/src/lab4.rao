@@ -1,0 +1,20 @@
+<?xml version="1" encoding="UTF-8"?>
+<GAO_CONFIG>
+    <Version>3.0</Version>
+    <Mode>Lite</Mode>
+    <AoCore_Lite index="0" sample_clock="clk" trig_type="0" capture_amount="1024" implemention="0" input_register_enabled="0" capture_init_data_enabled="0" module_name="top">
+        <SignalList>
+            <Signal capture_enable="true">A</Signal>
+            <Signal capture_enable="true">LED2</Signal>
+            <Signal capture_enable="true">LED3</Signal>
+            <Signal capture_enable="true">LED4</Signal>
+            <Signal capture_enable="true">LED5</Signal>
+            <Bus capture_enable="true" name="cnt[1:0]">
+                <Signal>cnt[1]</Signal>
+                <Signal>cnt[0]</Signal>
+            </Bus>
+            <Signal capture_enable="false">clk</Signal>
+        </SignalList>
+    </AoCore_Lite>
+    <GAO_ID>1101100000111101</GAO_ID>
+</GAO_CONFIG>

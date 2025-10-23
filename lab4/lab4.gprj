@@ -7,6 +7,5 @@
     <FileList>
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/lect.cst" type="file.cst" enable="1"/>
-        <File path="src/lab4.rao" type="file.gao" enable="1"/>
     </FileList>
 </Project>

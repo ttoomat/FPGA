@@ -12,9 +12,9 @@
                 <Signal>p2/n/i[1]</Signal>
                 <Signal>p2/n/i[0]</Signal>
             </Bus>
-            <Signal capture_enable="true">p2/n/clk_1Hz</Signal>
-            <Signal capture_enable="true">p2/n/clk_10kHz</Signal>
             <Signal capture_enable="true">SPI_NSS</Signal>
+            <Signal capture_enable="true">p2/n/clk_100kHz</Signal>
+            <Signal capture_enable="true">p2/n/clk_10Hz</Signal>
         </SignalList>
     </AoCore_Lite>
     <GAO_ID>1011011011011010</GAO_ID>

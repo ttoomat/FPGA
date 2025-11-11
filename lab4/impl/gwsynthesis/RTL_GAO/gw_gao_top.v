@@ -5,9 +5,9 @@ module gw_gao(
     \p2/n/i[2] ,
     \p2/n/i[1] ,
     \p2/n/i[0] ,
-    \p2/n/clk_1Hz ,
-    \p2/n/clk_10kHz ,
     SPI_NSS,
+    \p2/n/clk_100kHz ,
+    \p2/n/clk_10Hz ,
     iclk,
     tms_pad_i,
     tck_pad_i,
@@ -21,9 +21,9 @@ input \p2/n/i[3] ;
 input \p2/n/i[2] ;
 input \p2/n/i[1] ;
 input \p2/n/i[0] ;
-input \p2/n/clk_1Hz ;
-input \p2/n/clk_10kHz ;
 input SPI_NSS;
+input \p2/n/clk_100kHz ;
+input \p2/n/clk_10Hz ;
 input iclk;
 input tms_pad_i;
 input tck_pad_i;
@@ -36,9 +36,9 @@ wire \p2/n/i[3] ;
 wire \p2/n/i[2] ;
 wire \p2/n/i[1] ;
 wire \p2/n/i[0] ;
-wire \p2/n/clk_1Hz ;
-wire \p2/n/clk_10kHz ;
 wire SPI_NSS;
+wire \p2/n/clk_100kHz ;
+wire \p2/n/clk_10Hz ;
 wire iclk;
 wire tms_pad_i;
 wire tck_pad_i;
@@ -113,7 +113,7 @@ gw_con_top  u_icon_top(
 
 ao_top u_ao_top(
     .control(control0[9:0]),
-    .data_i({SPI_DI,\p2/SPI_CLK ,\p2/n/i[3] ,\p2/n/i[2] ,\p2/n/i[1] ,\p2/n/i[0] ,\p2/n/clk_1Hz ,\p2/n/clk_10kHz ,SPI_NSS}),
+    .data_i({SPI_DI,\p2/SPI_CLK ,\p2/n/i[3] ,\p2/n/i[2] ,\p2/n/i[1] ,\p2/n/i[0] ,SPI_NSS,\p2/n/clk_100kHz ,\p2/n/clk_10Hz }),
     .clk_i(iclk)
 );
 

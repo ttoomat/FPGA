@@ -20,20 +20,28 @@
     "InstLine" : 16,
     "InstName" : "p2",
     "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
-    "ModuleLine" : 66,
+    "ModuleLine" : 158,
     "ModuleName" : "part2",
     "SubInsts" : [
      {
       "InstFile" : "C:/Gowin/workspace/lab4/src/part2.v",
-      "InstLine" : 80,
+      "InstLine" : 167,
       "InstName" : "psc2",
       "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
-      "ModuleLine" : 47,
+      "ModuleLine" : 139,
       "ModuleName" : "clk_prescaler2"
      },
      {
       "InstFile" : "C:/Gowin/workspace/lab4/src/part2.v",
-      "InstLine" : 85,
+      "InstLine" : 171,
+      "InstName" : "psc1",
+      "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+      "ModuleLine" : 121,
+      "ModuleName" : "clk_prescaler1"
+     },
+     {
+      "InstFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+      "InstLine" : 177,
       "InstName" : "n",
       "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
       "ModuleLine" : 3,

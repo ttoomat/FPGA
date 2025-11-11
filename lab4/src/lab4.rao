@@ -4,11 +4,18 @@
     <Mode>Lite</Mode>
     <AoCore_Lite index="0" sample_clock="iclk" trig_type="0" capture_amount="1024" implemention="0" input_register_enabled="0" capture_init_data_enabled="0" module_name="top">
         <SignalList>
-            <Signal capture_enable="true">LED2</Signal>
-            <Signal capture_enable="true">LED3</Signal>
-            <Signal capture_enable="true">LED4</Signal>
-            <Signal capture_enable="true">LED5</Signal>
+            <Signal capture_enable="true">SPI_DI</Signal>
+            <Signal capture_enable="true">p2/SPI_CLK</Signal>
+            <Bus capture_enable="true" name="p2/n/i[3:0]">
+                <Signal>p2/n/i[3]</Signal>
+                <Signal>p2/n/i[2]</Signal>
+                <Signal>p2/n/i[1]</Signal>
+                <Signal>p2/n/i[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">p2/n/clk_1Hz</Signal>
+            <Signal capture_enable="true">p2/n/clk_10kHz</Signal>
+            <Signal capture_enable="true">SPI_NSS</Signal>
         </SignalList>
     </AoCore_Lite>
-    <GAO_ID>0110000101011110</GAO_ID>
+    <GAO_ID>1011011011011010</GAO_ID>
 </GAO_CONFIG>

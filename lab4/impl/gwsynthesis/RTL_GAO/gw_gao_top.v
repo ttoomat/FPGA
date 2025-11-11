@@ -1,8 +1,13 @@
 module gw_gao(
-    LED2,
-    LED3,
-    LED4,
-    LED5,
+    SPI_DI,
+    \p2/SPI_CLK ,
+    \p2/n/i[3] ,
+    \p2/n/i[2] ,
+    \p2/n/i[1] ,
+    \p2/n/i[0] ,
+    \p2/n/clk_1Hz ,
+    \p2/n/clk_10kHz ,
+    SPI_NSS,
     iclk,
     tms_pad_i,
     tck_pad_i,
@@ -10,20 +15,30 @@ module gw_gao(
     tdo_pad_o
 );
 
-input LED2;
-input LED3;
-input LED4;
-input LED5;
+input SPI_DI;
+input \p2/SPI_CLK ;
+input \p2/n/i[3] ;
+input \p2/n/i[2] ;
+input \p2/n/i[1] ;
+input \p2/n/i[0] ;
+input \p2/n/clk_1Hz ;
+input \p2/n/clk_10kHz ;
+input SPI_NSS;
 input iclk;
 input tms_pad_i;
 input tck_pad_i;
 input tdi_pad_i;
 output tdo_pad_o;
 
-wire LED2;
-wire LED3;
-wire LED4;
-wire LED5;
+wire SPI_DI;
+wire \p2/SPI_CLK ;
+wire \p2/n/i[3] ;
+wire \p2/n/i[2] ;
+wire \p2/n/i[1] ;
+wire \p2/n/i[0] ;
+wire \p2/n/clk_1Hz ;
+wire \p2/n/clk_10kHz ;
+wire SPI_NSS;
 wire iclk;
 wire tms_pad_i;
 wire tck_pad_i;
@@ -98,7 +113,7 @@ gw_con_top  u_icon_top(
 
 ao_top u_ao_top(
     .control(control0[9:0]),
-    .data_i({LED2,LED3,LED4,LED5}),
+    .data_i({SPI_DI,\p2/SPI_CLK ,\p2/n/i[3] ,\p2/n/i[2] ,\p2/n/i[1] ,\p2/n/i[0] ,\p2/n/clk_1Hz ,\p2/n/clk_10kHz ,SPI_NSS}),
     .clk_i(iclk)
 );
 

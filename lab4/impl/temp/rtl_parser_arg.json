@@ -2,6 +2,14 @@
  "Device" : "GW2A-18C",
  "Files" : [
   {
+   "Path" : "C:/Gowin/workspace/lab4/src/part1.v",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Gowin/workspace/lab4/src/part2.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "C:/Gowin/workspace/lab4/src/top.v",
    "Type" : "verilog"
   }

@@ -1,10 +1,46 @@
 [
  {
+  "InstFile" : "C:/Gowin/workspace/lab4/src/part1.v",
+  "InstLine" : 2,
+  "InstName" : "part1",
+  "ModuleFile" : "C:/Gowin/workspace/lab4/src/part1.v",
+  "ModuleLine" : 2,
+  "ModuleName" : "part1"
+ },
+ {
   "InstFile" : "C:/Gowin/workspace/lab4/src/top.v",
   "InstLine" : 2,
   "InstName" : "top",
   "ModuleFile" : "C:/Gowin/workspace/lab4/src/top.v",
   "ModuleLine" : 2,
-  "ModuleName" : "top"
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Gowin/workspace/lab4/src/top.v",
+    "InstLine" : 16,
+    "InstName" : "p2",
+    "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+    "ModuleLine" : 66,
+    "ModuleName" : "part2",
+    "SubInsts" : [
+     {
+      "InstFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+      "InstLine" : 80,
+      "InstName" : "psc2",
+      "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+      "ModuleLine" : 47,
+      "ModuleName" : "clk_prescaler2"
+     },
+     {
+      "InstFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+      "InstLine" : 85,
+      "InstName" : "n",
+      "ModuleFile" : "C:/Gowin/workspace/lab4/src/part2.v",
+      "ModuleLine" : 3,
+      "ModuleName" : "display_num"
+     }
+    ]
+   }
+  ]
  }
 ]

@@ -1,7 +1,40 @@
 GowinSynthesis start
 Running parser ...
+Analyzing Verilog file 'C:\Gowin\workspace\lab4\src\part1.v'
+Analyzing Verilog file 'C:\Gowin\workspace\lab4\src\part2.v'
 Analyzing Verilog file 'C:\Gowin\workspace\lab4\src\top.v'
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v'
+Analyzing included file 'C:\Gowin\workspace\lab4\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_top_define.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
+Back to file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v'
+Analyzing included file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_define.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Back to file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Analyzing included file 'C:\Gowin\workspace\lab4\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_top_define.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Back to file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Analyzing included file 'C:\Gowin\workspace\lab4\impl\gwsynthesis\RTL_GAO\ao_0\gw_ao_parameter.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Back to file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v'
+Analyzing included file 'C:\Gowin\workspace\lab4\impl\gwsynthesis\RTL_GAO\ao_control\gw_con_top_define.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v":367)
+Back to file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v":367)
+Analyzing included file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_parameter.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v":367)
+Back to file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v":367)
+Analyzing Verilog file 'C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\gw_jtag.v'
+Analyzing Verilog file 'C:\Gowin\workspace\lab4\impl\gwsynthesis\RTL_GAO\gw_gao_top.v'
 Compiling module 'top'("C:\Gowin\workspace\lab4\src\top.v":2)
+Compiling module 'part2'("C:\Gowin\workspace\lab4\src\part2.v":66)
+Compiling module 'clk_prescaler2'("C:\Gowin\workspace\lab4\src\part2.v":47)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("C:\Gowin\workspace\lab4\src\part2.v":56)
+Compiling module 'display_num'("C:\Gowin\workspace\lab4\src\part2.v":3)
+WARN  (EX3780) : Using initial value of 'num' since it is never assigned("C:\Gowin\workspace\lab4\src\part2.v":14)
+WARN  (EX3791) : Expression size 6 truncated to fit in target size 5("C:\Gowin\workspace\lab4\src\part2.v":20)
+Compiling module 'gw_gao'("C:\Gowin\workspace\lab4\impl\gwsynthesis\RTL_GAO\gw_gao_top.v":1)
+Compiling module 'GW_JTAG'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\gw_jtag.v":1)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_CON\gw_con_top.v":367)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+WARN  (EX3791) : Expression size ** truncated to fit in target size **("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_top.v":685)
+Compiling module '**'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
+Extracting RAM for identifier '**'("C:\Gowin\Gowin_V1.9.10.01_x64\IDE\data\ipcores\GAO_LITE\GW_AO_0\gw_ao_mem_ctrl.v":133)
+Trying to combine GAO to RTL design
 NOTE  (EX0101) : Current top module is "top"
 [5%] Running netlist conversion ...
 Running device independent optimization ...

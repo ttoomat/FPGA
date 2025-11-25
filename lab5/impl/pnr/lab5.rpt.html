@@ -83,7 +83,7 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Tue Nov 25 14:52:58 2025
+<td>Tue Nov 25 16:15:46 2025
 </td>
 </tr>
 <tr>
@@ -97,24 +97,24 @@ table.detail_table th.label {  min-width: 8%; width: 8%; }
 <tr>
 <td class="label">Place & Route Process</td>
 <td>Running placement:
-   Placement Phase 0: CPU time = 0h 0m 0.051s, Elapsed time = 0h 0m 0.051s
-   Placement Phase 1: CPU time = 0h 0m 0.536s, Elapsed time = 0h 0m 0.536s
-   Placement Phase 2: CPU time = 0h 0m 0.048s, Elapsed time = 0h 0m 0.048s
+   Placement Phase 0: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.046s
+   Placement Phase 1: CPU time = 0h 0m 0.999s, Elapsed time = 0h 0m 0.998s
+   Placement Phase 2: CPU time = 0h 0m 0.102s, Elapsed time = 0h 0m 0.102s
    Placement Phase 3: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s
    Total Placement: CPU time = 0h 0m 3s, Elapsed time = 0h 0m 3s
 Running routing:
    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-   Routing Phase 1: CPU time = 0h 0m 0.257s, Elapsed time = 0h 0m 0.257s
-   Routing Phase 2: CPU time = 0h 0m 0.382s, Elapsed time = 0h 0m 0.382s
+   Routing Phase 1: CPU time = 0h 0m 0.278s, Elapsed time = 0h 0m 0.278s
+   Routing Phase 2: CPU time = 0h 0m 0.606s, Elapsed time = 0h 0m 0.606s
    Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-   Total Routing: CPU time = 0h 0m 0.639s, Elapsed time = 0h 0m 0.639s
+   Total Routing: CPU time = 0h 0m 0.884s, Elapsed time = 0h 0m 0.884s
 Generate output files:
    CPU time = 0h 0m 5s, Elapsed time = 0h 0m 5s
 </td>
 </tr>
 <tr>
 <td class="label">Total Time and Memory Usage</td>
-<td>CPU time = 0h 0m 8s, Elapsed time = 0h 0m 8s, Peak memory usage = 386MB</td>
+<td>CPU time = 0h 0m 9s, Elapsed time = 0h 0m 9s, Peak memory usage = 399MB</td>
 </tr>
 </table>
 <br/>
@@ -129,12 +129,12 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">Logic</td>
-<td>185/20736</td>
-<td><1%</td>
+<td>223/20736</td>
+<td>2%</td>
 </tr>
 <tr>
 <td class="label">&nbsp &nbsp --LUT,ALU,ROM16</td>
-<td>185(160 LUT, 25 ALU, 0 ROM16)</td>
+<td>223(198 LUT, 25 ALU, 0 ROM16)</td>
 <td>-</td>
 </tr>
 <tr>
@@ -144,7 +144,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">Register</td>
-<td>166/16173</td>
+<td>207/16173</td>
 <td>2%</td>
 </tr>
 <tr>
@@ -154,7 +154,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">&nbsp &nbsp --Logic Register as FF</td>
-<td>166/15552</td>
+<td>207/15552</td>
 <td>2%</td>
 </tr>
 <tr>
@@ -169,22 +169,22 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">CLS</td>
-<td>148/10368</td>
+<td>185/10368</td>
 <td>2%</td>
 </tr>
 <tr>
 <td class="label">I/O Port</td>
-<td>7</td>
+<td>8</td>
 <td>-</td>
 </tr>
 <tr>
 <td class="label">I/O Buf</td>
-<td>7</td>
+<td>8</td>
 <td>-</td>
 </tr>
 <tr>
 <td class="label"> &nbsp &nbsp --Input Buf</td>
-<td>5</td>
+<td>6</td>
 <td>-</td>
 </tr>
 <tr>
@@ -276,7 +276,7 @@ Generate output files:
 </tr>
 <tr>
 <td class="label">bank 4</td>
-<td>0/36(0%)</td>
+<td>1/36(2%)</td>
 </tr>
 <tr>
 <td class="label">bank 5</td>
@@ -334,7 +334,7 @@ Generate output files:
 <tr>
 <td class="label">iclk_d</td>
 <td>PRIMARY</td>
-<td> TR</td>
+<td> TR BR</td>
 </tr>
 <tr>
 <td class="label">clk</td>
@@ -344,7 +344,7 @@ Generate output files:
 <tr>
 <td class="label">gw_gao_inst_0/control0[0]</td>
 <td>PRIMARY</td>
-<td> TR</td>
+<td> TR BR</td>
 </tr>
 <tr>
 <td class="label">gw_gao_inst_0/gao_jtag_reset</td>
@@ -390,6 +390,24 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>1.8</td>
+</tr>
+<tr>
+<td class="label">transmit_reset</td>
+<td></td>
+<td>T3/4</td>
+<td>Y</td>
+<td>in</td>
+<td>IOB52[B]</td>
+<td>LVCMOS33</td>
+<td>NA</td>
+<td>UP</td>
+<td>ON</td>
+<td>NONE</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">transmit_trig</td>
@@ -1893,7 +1911,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">M1/4</td>
@@ -1909,7 +1927,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">H3/4</td>
@@ -1925,7 +1943,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">H1/4</td>
@@ -1941,7 +1959,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">J2/4</td>
@@ -1957,7 +1975,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">K1/4</td>
@@ -1973,7 +1991,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">H5/4</td>
@@ -1989,7 +2007,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">J4/4</td>
@@ -2005,7 +2023,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">K3/4</td>
@@ -2021,7 +2039,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">K2/4</td>
@@ -2037,7 +2055,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">J5/4</td>
@@ -2053,7 +2071,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">K6/4</td>
@@ -2069,7 +2087,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">L1/4</td>
@@ -2085,7 +2103,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">L3/4</td>
@@ -2101,7 +2119,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">K4/4</td>
@@ -2117,7 +2135,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">L5/4</td>
@@ -2133,7 +2151,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">K5/4</td>
@@ -2149,7 +2167,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">L4/4</td>
@@ -2165,7 +2183,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">N2/4</td>
@@ -2181,7 +2199,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">P1/4</td>
@@ -2197,7 +2215,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">M3/4</td>
@@ -2213,7 +2231,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">N1/4</td>
@@ -2229,7 +2247,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">M2/4</td>
@@ -2245,7 +2263,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">N3/4</td>
@@ -2261,7 +2279,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">R1/4</td>
@@ -2277,7 +2295,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">P2/4</td>
@@ -2293,7 +2311,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">P4/4</td>
@@ -2309,7 +2327,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">T4/4</td>
@@ -2325,7 +2343,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">R3/4</td>
@@ -2341,7 +2359,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">T2/4</td>
@@ -2357,7 +2375,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">P5/4</td>
@@ -2373,7 +2391,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">R5/4</td>
@@ -2389,7 +2407,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">R4/4</td>
@@ -2405,14 +2423,14 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">T3/4</td>
-<td>-</td>
+<td>transmit_reset</td>
 <td>in</td>
 <td>IOB52[B]</td>
-<td>LVCMOS18</td>
+<td>LVCMOS33</td>
 <td>NA</td>
 <td>UP</td>
 <td>ON</td>
@@ -2421,7 +2439,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">R6/4</td>
@@ -2437,7 +2455,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">T5/4</td>
@@ -2453,7 +2471,7 @@ Generate output files:
 <td>NA</td>
 <td>NA</td>
 <td>NA</td>
-<td>1.8</td>
+<td>3.3</td>
 </tr>
 <tr>
 <td class="label">B14/7</td>

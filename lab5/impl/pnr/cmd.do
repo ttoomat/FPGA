@@ -3,7 +3,7 @@
 -pn GW2A-LV18PG256C8/I7
 -cst C:\Gowin\workspace\lab5\src\lab5.cst
 -cfg C:\Gowin\workspace\lab5\impl\pnr\device.cfg
--gao_crc 1010010010001110
+-gao_crc 1101110101111010
 -bit
 -tr
 -ph

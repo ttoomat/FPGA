@@ -7,6 +7,18 @@ module gw_gao(
     \t1/trig ,
     \t1/present_state[1] ,
     \t1/present_state[0] ,
+    \t1/next_state[1] ,
+    \t1/next_state[0] ,
+    \data1[7] ,
+    \data1[6] ,
+    \data1[5] ,
+    \data1[4] ,
+    \data1[3] ,
+    \data1[2] ,
+    \data1[1] ,
+    \data1[0] ,
+    \t1/reset ,
+    \t1/tc ,
     iclk,
     tms_pad_i,
     tck_pad_i,
@@ -22,6 +34,18 @@ input \t1/tx ;
 input \t1/trig ;
 input \t1/present_state[1] ;
 input \t1/present_state[0] ;
+input \t1/next_state[1] ;
+input \t1/next_state[0] ;
+input \data1[7] ;
+input \data1[6] ;
+input \data1[5] ;
+input \data1[4] ;
+input \data1[3] ;
+input \data1[2] ;
+input \data1[1] ;
+input \data1[0] ;
+input \t1/reset ;
+input \t1/tc ;
 input iclk;
 input tms_pad_i;
 input tck_pad_i;
@@ -36,6 +60,18 @@ wire \t1/tx ;
 wire \t1/trig ;
 wire \t1/present_state[1] ;
 wire \t1/present_state[0] ;
+wire \t1/next_state[1] ;
+wire \t1/next_state[0] ;
+wire \data1[7] ;
+wire \data1[6] ;
+wire \data1[5] ;
+wire \data1[4] ;
+wire \data1[3] ;
+wire \data1[2] ;
+wire \data1[1] ;
+wire \data1[0] ;
+wire \t1/reset ;
+wire \t1/tc ;
 wire iclk;
 wire tms_pad_i;
 wire tck_pad_i;
@@ -110,7 +146,7 @@ gw_con_top  u_icon_top(
 
 ao_top u_ao_top(
     .control(control0[9:0]),
-    .data_i({clk,\t1/data_ind[2] ,\t1/data_ind[1] ,\t1/data_ind[0] ,\t1/tx ,\t1/trig ,\t1/present_state[1] ,\t1/present_state[0] }),
+    .data_i({clk,\t1/data_ind[2] ,\t1/data_ind[1] ,\t1/data_ind[0] ,\t1/tx ,\t1/trig ,\t1/present_state[1] ,\t1/present_state[0] ,\t1/next_state[1] ,\t1/next_state[0] ,\data1[7] ,\data1[6] ,\data1[5] ,\data1[4] ,\data1[3] ,\data1[2] ,\data1[1] ,\data1[0] ,\t1/reset ,\t1/tc }),
     .clk_i(iclk)
 );
 

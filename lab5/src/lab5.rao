@@ -16,7 +16,23 @@
                 <Signal>t1/present_state[1]</Signal>
                 <Signal>t1/present_state[0]</Signal>
             </Bus>
+            <Bus capture_enable="true" name="t1/next_state[1:0]">
+                <Signal>t1/next_state[1]</Signal>
+                <Signal>t1/next_state[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="data1[7:0]">
+                <Signal>data1[7]</Signal>
+                <Signal>data1[6]</Signal>
+                <Signal>data1[5]</Signal>
+                <Signal>data1[4]</Signal>
+                <Signal>data1[3]</Signal>
+                <Signal>data1[2]</Signal>
+                <Signal>data1[1]</Signal>
+                <Signal>data1[0]</Signal>
+            </Bus>
+            <Signal capture_enable="true">t1/reset</Signal>
+            <Signal capture_enable="true">t1/tc</Signal>
         </SignalList>
     </AoCore_Lite>
-    <GAO_ID>1010010010001110</GAO_ID>
+    <GAO_ID>1101110101111010</GAO_ID>
 </GAO_CONFIG>

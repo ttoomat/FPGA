@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Gowin/workspace/lab5/src/top.v",
-    "InstLine" : 27,
+    "InstLine" : 28,
     "InstName" : "psc0",
     "ModuleFile" : "C:/Gowin/workspace/lab5/src/top.v",
     "ModuleLine" : 2,
@@ -17,7 +17,7 @@
    },
    {
     "InstFile" : "C:/Gowin/workspace/lab5/src/top.v",
-    "InstLine" : 37,
+    "InstLine" : 38,
     "InstName" : "t1",
     "ModuleFile" : "C:/Gowin/workspace/lab5/src/transmitter.v",
     "ModuleLine" : 1,

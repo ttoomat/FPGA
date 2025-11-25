@@ -5,8 +5,8 @@ module prescaler(
 );
 reg[24:0] cnt=0;
 always @(posedge iclk) begin
-    // 10kHz
-    if (cnt < 27_00-1) begin
+    // 1Hz
+    if (cnt < 27_000_000-1) begin
         cnt <= cnt + 1;
     end
     else begin
@@ -18,6 +18,7 @@ endmodule
 
 module top(
     input iclk,
+    input transmit_reset,
     input transmit_trig,
     output transmit_tx
 );
@@ -37,11 +38,9 @@ wire [7:0] data1 = 8'b0101_0011;
 transmitter t1 (
     .clk(clk),
     .data(data1),
-    .reset(0),
-    //.tcr(1), // transmission complete reset
+    .reset(transmit_reset),
     .trig(transmit_trig), // по импульсу trig будем посылать 1 байт
     .tx(transmit_tx) // данные последовательно
-    //output reg tc // 1 байт отправлен = transmission complete
 );
 
 endmodule

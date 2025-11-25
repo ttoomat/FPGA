@@ -7,3 +7,6 @@ IO_PORT "transmit_tx" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
 // триггер для отправки сообщения transsmitter-ом пока что будет кнопкой
 IO_LOC "transmit_trig" T10; // кнопка S0
 IO_PORT "transmit_trig" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+// reset logic
+IO_LOC "transmit_reset" T3; // кнопка S1
+IO_PORT "transmit_reset" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;

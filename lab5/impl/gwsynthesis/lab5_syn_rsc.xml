@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top" T_Register="166(0)" T_Alu="24(0)" T_Lut="165(0)" T_Bsram="1(0)">
+    <SubModule name="gw_gao_inst_0" Register="134" Lut="142" Bsram="1" T_Register="134(134)" T_Lut="142(142)" T_Bsram="1(1)"/>
+    <SubModule name="psc0" Register="26" Alu="24" Lut="11" T_Register="26(26)" T_Alu="24(24)" T_Lut="11(11)"/>
+    <SubModule name="t1" Register="6" Lut="12" T_Register="6(6)" T_Lut="12(12)"/>
+</Module>

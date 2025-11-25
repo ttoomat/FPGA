@@ -1,0 +1,9 @@
+// clk
+IO_LOC "iclk" H11;
+IO_PORT "iclk" IO_TYPE=LVCMOS18 PULL_MODE=UP BANK_VCCIO=1.8;
+// выход трансмиттера можно хотя б просто на светодиод для начала 
+IO_LOC "transmit_tx" A13; // LED1
+IO_PORT "transmit_tx" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
+// триггер для отправки сообщения transsmitter-ом пока что будет кнопкой
+IO_LOC "transmit_trig" T10; // кнопка S0
+IO_PORT "transmit_trig" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;

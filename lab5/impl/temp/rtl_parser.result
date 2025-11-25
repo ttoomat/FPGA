@@ -1,0 +1,28 @@
+[
+ {
+  "InstFile" : "C:/Gowin/workspace/lab5/src/top.v",
+  "InstLine" : 19,
+  "InstName" : "top",
+  "ModuleFile" : "C:/Gowin/workspace/lab5/src/top.v",
+  "ModuleLine" : 19,
+  "ModuleName" : "top",
+  "SubInsts" : [
+   {
+    "InstFile" : "C:/Gowin/workspace/lab5/src/top.v",
+    "InstLine" : 27,
+    "InstName" : "psc0",
+    "ModuleFile" : "C:/Gowin/workspace/lab5/src/top.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "prescaler"
+   },
+   {
+    "InstFile" : "C:/Gowin/workspace/lab5/src/top.v",
+    "InstLine" : 37,
+    "InstName" : "t1",
+    "ModuleFile" : "C:/Gowin/workspace/lab5/src/transmitter.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "transmitter"
+   }
+  ]
+ }
+]

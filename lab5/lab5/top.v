@@ -23,10 +23,11 @@ endmodule
 
 module top(
     input iclk,
-    input transmit_reset,
-    input transmit_trig, // when high impulse, the tansmission begins
-    //input uart_receive, 
-    output uart_transmit
+    //input transmit_reset,
+    //input transmit_trig, // when high impulse, the tansmission begins
+    input receive_reset,
+    input uart_receive
+    //output uart_transmit
 );
 wire clk;
 // после этого делителя в clk будет тактовый сигнал 10kHz
@@ -36,11 +37,19 @@ prescaler psc0 (
     .oclk(clk)
 );
 
-wire [7:0] data1 = 8'b0000_1101;
+wire [7:0] data1;// = 8'b0000_1101;
 wire tc; // пока не исп, но выходит из transmitter
 // проверить, верно ли к внешним выходам подключены линии.
 // terminal connect -> посмотреть, приходит ли что-то
 
+receiver r1 (
+    .iclk(iclk), // её будем делить уже как захочем
+    .reset(receive_reset),
+    .rx(uart_receive), // 1 bit data
+    .data(data1) // выход - массив
+);
+
+/*
 transmitter t1 (
     .clk(clk),
     .data(data1),
@@ -49,7 +58,7 @@ transmitter t1 (
     .tx(uart_transmit), // данные последовательно
     .tc(tc)
 );
-
+*/
 // можно попробовать взять из ресивера и в трансмиттер передать
 
 // логика будет такая: взять данные из консоли receiver'ом и передать в модуль, включающий числа.

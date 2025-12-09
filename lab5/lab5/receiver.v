@@ -30,7 +30,7 @@ always @(posedge iclk) begin
 end
 endmodule
 /*
-В receiver по идее надо ждать, пока не придёт падающий фронт линии
+В receiver ждём, пока не придёт падающий фронт линии, idle -> start bit
 и тогда запускать тактовую частоту. Так как мы знаем baudrate, то переходы по состояниям 
 можно делать и по тактам. 
 stop_bit - отлавливаем его. Это логич 0.
@@ -51,7 +51,6 @@ reg[1:0] present_state, next_state;
 // 27 MHz - iclk frequency
 // 14_400 - Baudrate
 reg clk_rx;
-//reg [24:0] cnt_clk=0; // внутри always не можем вызвать модуль прескейлера, так что напишем его внутри
 reg clk_enable=0;
 initial begin
     data_ind = 0;
@@ -66,14 +65,12 @@ prescaler_rx p_rx (
     .oclk(clk_rx)
 );
 // отлавливаем падение фронта после idle
-// но ведь оно будет срабатывать каждый раз, когда падает rx...
 always @(negedge rx) begin
     // при падении rx переход на start_bit ТОЛЬКО если прошлое состояние - idle
     case (present_state)
     idle: begin
         next_state = start_bit;
-        // и надо здесь запустить часы
-        // непонятно, точно ли тактовые частоты будут согласованы
+        // и надо здесь запустить часы, они будут согласованы как надо
         clk_enable = 1;
     end
     endcase
@@ -118,58 +115,4 @@ always @(posedge clk_rx) begin
     endcase // обработка состояния
     
 end // always posedge clk_rx
-
-/*
-always @(posedge clk) begin
-if (reset) begin
-    present_state = idle;
-end else begin
-    // обработка текущего состояния
-    // вроде ничего не надо обрабатывать, кроме data_sending
-    case (present_state)
-    idle: begin
-    end
-    start_bit: begin
-        //next_state <= data_sending;
-    end
-    data_sending: begin
-        // если data_ind=7, то вся передача состоялась
-        if (data_ind < 7) begin
-            // аналог сдвигового регистра
-            // послали один бит
-            data[data_ind] <= rx;
-            // увеличили счетчик, чтоб потом уже следующий бит посылать
-            data_ind <= data_ind + 1;
-        end
-    end
-    stop_bit: begin
-        rxne = 1;
-    end
-    endcase
-
-    // переход к новому состоянию
-    // вроде ничего не надо обрабатывать, кроме data_sending
-    // на stop_bit переходим по тактам
-    case (present_state)
-    idle: begin
-    end
-    // start_bit приходит по линии
-    start_bit: begin
-        next_state <= data_sending;
-    end
-    data_sending: begin
-        // если data_ind=7, то вся передача состоялась
-        if (data_ind >= 7) begin
-            next_state <= stop_bit;
-        end else begin
-            next_state <= data_sending;
-        end
-    end
-    stop_bit: begin
-        rxne = 1;
-    end
-    endcase
-end // if-else
-end // always
-*/
 endmodule

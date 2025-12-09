@@ -23,11 +23,11 @@ endmodule
 
 module top(
     input iclk,
-    //input transmit_reset,
-    //input transmit_trig, // when high impulse, the tansmission begins
+    input transmit_reset,
+    input transmit_trig, // работает как enable, если честно
     input receive_reset,
-    input uart_receive
-    //output uart_transmit
+    input uart_receive,
+    output uart_transmit
 );
 wire clk;
 // после этого делителя в clk будет тактовый сигнал 10kHz
@@ -42,6 +42,7 @@ wire tc; // пока не исп, но выходит из transmitter
 // проверить, верно ли к внешним выходам подключены линии.
 // terminal connect -> посмотреть, приходит ли что-то
 
+// можно попробовать взять из ресивера и в трансмиттер передать
 receiver r1 (
     .iclk(iclk), // её будем делить уже как захочем
     .reset(receive_reset),
@@ -49,7 +50,6 @@ receiver r1 (
     .data(data1) // выход - массив
 );
 
-/*
 transmitter t1 (
     .clk(clk),
     .data(data1),
@@ -58,9 +58,9 @@ transmitter t1 (
     .tx(uart_transmit), // данные последовательно
     .tc(tc)
 );
-*/
-// можно попробовать взять из ресивера и в трансмиттер передать
+
 
 // логика будет такая: взять данные из консоли receiver'ом и передать в модуль, включающий числа.
-
+// и ещё трансмиттить то, что получили. Или то, что изменилось по нажатию кнопки.
+// + реализовать сложение и вычитание на 1 по нажатию кнопки. Одна кнопка для прибавления 1, другая для вычитания 1.
 endmodule

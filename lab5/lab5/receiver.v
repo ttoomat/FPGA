@@ -38,11 +38,15 @@ data_sending - через 1 такт после start_bit
 stop_bit - через 1 такт после 0-7 битов data_sending. Надо бы проверить, точно ли его послали. Это логич 1.
 idle - можно проверять на idle после stop_bit.  
 */
+/*
+Некая особенность: всегда необходим idle state хотя бы 1 бит между stop bit и start bit новой посылки.
+*/
 module receiver (
     input iclk,  // её будем делить уже как захочем
     input reset,
     input rx,    // 1 bit data
-    output reg [7:0]data
+    output reg [7:0]data,
+    output reg ready
     // можно добавить отлов ошибки и rx not empty flag
 );
 reg [3:0]data_ind; // номер бита данных от 0 до 7 + 1
@@ -56,6 +60,7 @@ initial begin
     data_ind = 0;
     present_state = idle;
     next_state = idle;
+    ready=0;
     // но есть шанс подключиться уже во время передачи...
     //rxne = 0;
 end
@@ -72,6 +77,7 @@ always @(negedge rx) begin
         next_state = start_bit;
         // и надо здесь запустить часы, они будут согласованы как надо
         clk_enable = 1;
+        //ready=0;
     end
     endcase
 end
@@ -105,12 +111,16 @@ always @(posedge clk_rx) begin
         end
         start_bit: begin
             data_ind <= 0;
+            ready=0;
         end
         data_sending: begin
             if (data_ind <= 7) begin
                 data[data_ind] <= rx;
                 data_ind <= data_ind + 1;
             end
+        end
+        stop_bit: begin
+            ready = 1;
         end
     endcase // обработка состояния
     

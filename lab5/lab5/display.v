@@ -1,7 +1,8 @@
 // модуль отображения числа на дисплее
+// на вход подаётся число, которое хотим отрисовать
 module display(
-    // число из 8 десятичных чисел - 30 двоичных
-    input [29:0] number_to_display,
+    // есть реальное число. То есть массив из 8 чисел, каждое -- десятичное, т.е. 4 бита.
+    input [3:0] real_num [7:0],
     // частота для подачи на SPI дисплей
     input clk_100kHz,
     // 16 bit data - DIG, SEG
@@ -36,15 +37,16 @@ assign seg[8]=8'b111_11111;
 assign seg[9]=8'b111_10111;
 
 // каждый разряд - 17 бит число (1+8+8), кодирующее digits & segments
-reg[16:0] num [7:0];
-num[0]={1'b0,dig[0],seg[real_num[0]]};
-num[1]={1'b0,dig[1],seg[real_num[1]]};
-num[2]={1'b0,dig[2],seg[real_num[2]]};
-num[3]={1'b0,dig[3],seg[real_num[3]]};
-num[4]={1'b0,dig[4],seg[real_num[4]]};
-num[5]={1'b0,dig[5],seg[real_num[5]]};
-num[6]={1'b0,dig[6],seg[real_num[6]]};
-num[7]={1'b0,dig[7],seg[real_num[7]]};
+// и всего 8 таких разрядов
+wire[16:0] num [7:0];
+assign num[0]={1'b0,dig[0],seg[real_num[0]]};
+assign num[1]={1'b0,dig[1],seg[real_num[1]]};
+assign num[2]={1'b0,dig[2],seg[real_num[2]]};
+assign num[3]={1'b0,dig[3],seg[real_num[3]]};
+assign num[4]={1'b0,dig[4],seg[real_num[4]]};
+assign num[5]={1'b0,dig[5],seg[real_num[5]]};
+assign num[6]={1'b0,dig[6],seg[real_num[6]]};
+assign num[7]={1'b0,dig[7],seg[real_num[7]]};
 
 reg[3:0] ind = 0; // какой разряд отображает
 reg[4:0] i = 0;   // index 0-15 - какой бит num передаём

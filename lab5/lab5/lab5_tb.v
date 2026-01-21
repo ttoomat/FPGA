@@ -1,7 +1,7 @@
 `timescale 1ns/100ps // 1 ns time unit, 100 ps resolution
-/*
-Оттестируем receiver -> transmitter.
-*/
+/* Весь этот модуль - testbench, исключительно для симуляции.
+ * Оттестируем receiver -> transmitter.
+ */
 module lab5_tb;
     reg clk=1;
 	always #1 clk = !clk;
@@ -27,29 +27,28 @@ module lab5_tb;
         .uart_transmit(uart_transmit),
         .real_num(real_num)
     );
-    // Распаковка массива real_num для надёжного дампа в GTKWave
-wire [3:0] rn0 = real_num[0];
-wire [3:0] rn1 = real_num[1];
-wire [3:0] rn2 = real_num[2];
-wire [3:0] rn3 = real_num[3];
-wire [3:0] rn4 = real_num[4];
-wire [3:0] rn5 = real_num[5];
-wire [3:0] rn6 = real_num[6];
-wire [3:0] rn7 = real_num[7];
+    // костыль, т.к. GTK-wave не отображает real_num почему-то
+    wire [3:0] rn0 = real_num[0];
+    wire [3:0] rn1 = real_num[1];
+    wire [3:0] rn2 = real_num[2];
+    wire [3:0] rn3 = real_num[3];
+    wire [3:0] rn4 = real_num[4];
+    wire [3:0] rn5 = real_num[5];
+    wire [3:0] rn6 = real_num[6];
+    wire [3:0] rn7 = real_num[7];
 
     initial begin
 		$dumpfile("wave.vcd");		// create a VCD waveform dump called "wave.vcd"
-		$dumpvars(0, lab5_tb);  // t0 — имя экземпляра top в lab5_tb		// dump variable changes in the testbench
+		$dumpvars(0, lab5_tb);      // dump variable changes in the testbench
 
     receive_reset <= 1; #10
     receive_reset <= 0; #10 
     #10 // чёто ждём покайфу
     // передадим data_to_receiver
-    uart_receive <= 1; #40 // idle, взяла кривое время, чтоб посмотреть как будет себя вести
-    // ведёт себя как надо, то есть синхронизируется!!!
-    // блин надо ж по тактам ну ладно
-    // как я поняла, 1 такт нашего нынешнего устойства= 20
+    uart_receive <= 1; #40
+    // 1 такт нашего нынешнего устойства = 20
     // 8 bits = 2 decimal numbers
+    // так что делаем 4 посылки по UART
     uart_receive <= 0; #20 // start
     uart_receive <= data_to_receiver1[0]; #20
     uart_receive <= data_to_receiver1[1]; #20
@@ -96,6 +95,7 @@ wire [3:0] rn7 = real_num[7];
     // дальше idle
     #10
     // начинаем отправлять то, что приняли
+    // сейчас не реализовано отправление обратно
     transmit_reset <= 1; #10
     transmit_reset <= 0; #10 
     #10 // чёто ждём по кайфу
@@ -107,12 +107,12 @@ wire [3:0] rn7 = real_num[7];
 
         $finish;
     end
-
+// выводим то, что считали по UART
 always @(posedge clk) begin
-    if (t0.real_num[0] !== 4'bx) begin
+    if (real_num[0] !== 4'bx) begin
         $display("real_num = %h %h %h %h %h %h %h %h",
-            t0.real_num[7], t0.real_num[6], t0.real_num[5], t0.real_num[4],
-            t0.real_num[3], t0.real_num[2], t0.real_num[1], t0.real_num[0]);
+            real_num[7], real_num[6], real_num[5], real_num[4],
+            real_num[3], real_num[2], real_num[1], real_num[0]);
     end
 end
 endmodule

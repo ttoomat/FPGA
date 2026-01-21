@@ -1,5 +1,7 @@
-// делитель частоты
-// 27_000_000 / 1875 = 14_400
+/* Делитель частоты для receiver.
+ * Для тестировки 1875 заменено на 5.
+ * 27_000_000 / 1875 = 14_400
+ */
 module prescaler_rx(
     input iclk,
     input enable,
@@ -22,32 +24,29 @@ always @(posedge iclk) begin
         end
     end // if enable
     else begin
-        // если не enable - время на нуле
-        // или оно должно просто остановиться?
-        // хотя мы ж хотим начинать с нулевого значения всегда
         oclk = 0;
     end
 end
 endmodule
 /*
-В receiver ждём, пока не придёт падающий фронт линии, idle -> start bit
-и тогда запускать тактовую частоту. Так как мы знаем baudrate, то переходы по состояниям 
-можно делать и по тактам. 
-stop_bit - отлавливаем его. Это логич 0.
-data_sending - через 1 такт после start_bit
-stop_bit - через 1 такт после 0-7 битов data_sending. Надо бы проверить, точно ли его послали. Это логич 1.
-idle - можно проверять на idle после stop_bit.  
-*/
-/*
-Некая особенность: всегда необходим idle state хотя бы 1 бит между stop bit и start bit новой посылки.
+В receiver ждём, пока не придёт падающий фронт линии, idle -> start bit и тогда запускать
+тактовую частоту. Так как знаем baudrate, то переходы по состояниям делаем по тактам. 
+start_bit - отлавливаем его. Линия падает на 0.
+data_sending - через 1 такт после start_bit.
+stop_bit - через 1 такт после последнего из 0-7 битов data_sending. Надо бы проверить, точно ли его послали, но пока не делаем. Это 1.
+idle - можно проверять на idle после stop_bit.
+
+Некая особенность: при подряд идущих посылках всегда необходим idle state
+  хотя бы 1 бит между stop bit и start bit новой посылки.
+  также неизвестно, реально ли синхронизируются часы по падающей линии после idle.
 */
 module receiver (
-    input iclk,  // её будем делить уже как захочем
+    input iclk,  // 27 MHz. Делитель вызывается внутри receiver.
     input reset,
-    input rx,    // 1 bit data
-    output reg [7:0]data,
-    output reg ready
-    // можно добавить отлов ошибки и rx not empty flag
+    input rx,    // последовательные данные
+    output reg [7:0]data, // выход -- шина данных (параллельно)
+    output reg ready // RXNE, после каждого прочитанного байта поднимается в 1.
+    // можно добавить отлов ошибки
 );
 reg [3:0]data_ind; // номер бита данных от 0 до 7 + 1
 parameter idle=0, start_bit=1, data_sending=2, stop_bit=3; 
@@ -60,9 +59,7 @@ initial begin
     data_ind = 0;
     present_state = idle;
     next_state = idle;
-    ready=0;
-    // но есть шанс подключиться уже во время передачи...
-    //rxne = 0;
+    ready = 0;
 end
 prescaler_rx p_rx (
     .iclk(iclk),
@@ -82,9 +79,9 @@ always @(negedge rx) begin
     endcase
 end
 
-// читаем по возр фронту clk
+// receiver читает данные с линии по posedge clk
 always @(posedge clk_rx) begin
-    // остальные переходы кроме idle-> start_bit происхоят по тактам
+    // остальные переходы кроме idle -> start_bit происхоят по тактам
     case (present_state)
     start_bit: begin
         next_state = data_sending;
@@ -107,11 +104,11 @@ always @(posedge clk_rx) begin
     // обработка состояния
     case (present_state)
         idle: begin
-            clk_enable = 0; // снова ждём пад фр
+            clk_enable = 0; // снова ждём negedge, чтоб запустить часы
         end
         start_bit: begin
             data_ind <= 0;
-            ready=0;
+            ready = 0;
         end
         data_sending: begin
             if (data_ind <= 7) begin
@@ -123,6 +120,5 @@ always @(posedge clk_rx) begin
             ready = 1;
         end
     endcase // обработка состояния
-    
 end // always posedge clk_rx
 endmodule

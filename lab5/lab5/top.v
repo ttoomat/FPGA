@@ -57,6 +57,7 @@ module top(
     input receive_reset, // не исп
     input uart_receive, // rx line
     output uart_transmit, // tx line
+    output [3:0] received_num [7:0], // только для симуляции
     output [3:0] real_num [7:0], // только для симуляции
     // buttons:
     input SW_pos, // сигнал с кнопки, прибавляющей числа
@@ -84,12 +85,25 @@ clk_prescaler2 psc2 (
 // на железе -- проверить, верно ли к внешним выходам подключены линии.
 // terminal connect -> посмотреть, приходит ли что-то от transmitter
 
+//wire[3:0] received_num [7:0];
 // testbench -> receive8num
+wire ready_8num;
 receive8num r8num (
     .iclk(iclk),
     .reset(receive_reset),
     .rx(uart_receive),
-    .real_num(real_num)
+    .real_num(received_num),
+    .ready_8num(ready_8num)
+);
+//wire[3:0] real_num [7:0];
+// именно изменённое кнопками число идёт в тестбенч
+buttons buttons0(
+    .i_iclk(iclk),
+    .i_SW_pos(SW_pos),
+    .i_SW_neg(SW_neg),
+    .i_received_number(received_num),
+    .o_changed_number(real_num),
+    .i_ready_8num(ready_8num)
 );
 
 display display_received(

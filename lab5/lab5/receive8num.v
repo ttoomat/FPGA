@@ -1,15 +1,19 @@
 /* Модуль считывания 4-х посылок UART.
+ * Скорее всего, больше 1 раза по 4 посылки оно не выдержит.
  */
 module receive8num (
     input iclk,
     input reset,
     input rx,
-    output reg [3:0] real_num [7:0]  // 8 значений по 4 бита, т.е. 8 десятичных цифр
+    output reg [3:0] real_num [7:0],  // 8 значений по 4 бита, т.е. 8 десятичных цифр
+    output reg ready_8num
 );
 reg [7:0] current_byte; // байт данных из 1 посылки UART
 wire ready_1byte; // выход из receiver: 1 если прочитал новый байт
 reg [1:0] number_index=0;  // 0..3, номер посылки
-
+initial begin
+    ready_8num = 0;
+end
 // UART-приёмник принимает все посылки, надо успевать записывать в буффер
 receiver rUart_1byte (
     .iclk(iclk),
@@ -32,6 +36,7 @@ always @(posedge iclk) begin
         real_num[number_index * 2 + 1] <= current_byte[7:4];
         if (number_index == 3) begin
             // принято все 4 посылки
+            ready_8num = 1;
             number_index <= 0;
         end else begin
             number_index <= number_index + 1;

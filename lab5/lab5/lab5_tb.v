@@ -8,14 +8,16 @@ module lab5_tb;
     // DUT inputs
 	reg transmit_reset = 0, transmit_trig = 0;
     reg receive_reset = 0, uart_receive = 1; // idle line
+    reg SW_pos = 0, SW_neg = 0;
     // DUT outputs
     wire uart_transmit;
-    wire [3:0] real_num [7:0]; // this we will use in display module
+    wire [3:0] received_num [7:0]; // received
+    wire [3:0] real_num [7:0]; // changed
     // 8 numbers: 1 2 3 4 5 6 7 8
     wire [7:0] data_to_receiver1 = 8'b0001_0010;
     wire [7:0] data_to_receiver2 = 8'b0011_0100;
     wire [7:0] data_to_receiver3 = 8'b0101_0110;
-    wire [7:0] data_to_receiver4 = 8'b0111_1000;
+    wire [7:0] data_to_receiver4 = 8'b0000_1000;
 	event gen_result;
 
     top t0(
@@ -25,7 +27,10 @@ module lab5_tb;
         .transmit_reset(transmit_reset),
         .transmit_trig(transmit_trig),
         .uart_transmit(uart_transmit),
-        .real_num(real_num)
+        .received_num(received_num),
+        .real_num(real_num),
+        .SW_pos(SW_pos),
+        .SW_neg(SW_neg)
     );
     // костыль, т.к. GTK-wave не отображает real_num почему-то
     wire [3:0] rn0 = real_num[0];
@@ -36,6 +41,15 @@ module lab5_tb;
     wire [3:0] rn5 = real_num[5];
     wire [3:0] rn6 = real_num[6];
     wire [3:0] rn7 = real_num[7];
+
+    wire [3:0] rn_0 = received_num[0];
+    wire [3:0] rn_1 = received_num[1];
+    wire [3:0] rn_2 = received_num[2];
+    wire [3:0] rn_3 = received_num[3];
+    wire [3:0] rn_4 = received_num[4];
+    wire [3:0] rn_5 = received_num[5];
+    wire [3:0] rn_6 = received_num[6];
+    wire [3:0] rn_7 = received_num[7];
 
     initial begin
 		$dumpfile("wave.vcd");		// create a VCD waveform dump called "wave.vcd"
@@ -100,7 +114,10 @@ module lab5_tb;
     transmit_reset <= 0; #10 
     #10 // чёто ждём по кайфу
     transmit_trig <= 1; #10
-
+    // вот мы всё считали, круто, теперь оттестим работу кнопок
+    SW_neg <= 1; #20
+    SW_neg <= 0; #20
+    SW_neg <= 1; #20
     #1000
 	
     #10 -> gen_result;
@@ -113,6 +130,11 @@ always @(posedge clk) begin
         $display("real_num = %h %h %h %h %h %h %h %h",
             real_num[7], real_num[6], real_num[5], real_num[4],
             real_num[3], real_num[2], real_num[1], real_num[0]);
+    end
+    if (received_num[0] !== 4'bx) begin
+        $display("received = %h %h %h %h %h %h %h %h",
+            received_num[7], received_num[6], received_num[5], received_num[4],
+            received_num[3], received_num[2], received_num[1], received_num[0]);
     end
 end
 endmodule
